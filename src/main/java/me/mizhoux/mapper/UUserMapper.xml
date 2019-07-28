@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.mizhoux.mapper.UUserMapper">
+  <resultMap id="BaseResultMap" type="me.mizhoux.model.UUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="login_pwd" jdbcType="VARCHAR" property="loginPwd" />
+    <result column="pay_pwd" jdbcType="VARCHAR" property="payPwd" />
+    <result column="vip" jdbcType="TINYINT" property="vip" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="platform" jdbcType="VARCHAR" property="platform" />
+    <result column="op_channel_id" jdbcType="VARCHAR" property="opChannelId" />
+    <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="login_pwd_update_time" jdbcType="TIMESTAMP" property="loginPwdUpdateTime" />
+    <result column="pay_pwd_update_time" jdbcType="TIMESTAMP" property="payPwdUpdateTime" />
+    <result column="invite_code" jdbcType="VARCHAR" property="inviteCode" />
+    <result column="versions" jdbcType="BIGINT" property="versions" />
+    <result column="del" jdbcType="CHAR" property="del" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from u_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="me.mizhoux.model.UUser">
+    insert into u_user (id, uuid, username, 
+      login_pwd, pay_pwd, vip, 
+      phone, state, salt, 
+      platform, op_channel_id, insert_time, 
+      update_time, login_pwd_update_time, pay_pwd_update_time, 
+      invite_code, versions, del, 
+      remark)
+    values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{loginPwd,jdbcType=VARCHAR}, #{payPwd,jdbcType=VARCHAR}, #{vip,jdbcType=TINYINT}, 
+      #{phone,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, 
+      #{platform,jdbcType=VARCHAR}, #{opChannelId,jdbcType=VARCHAR}, #{insertTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{loginPwdUpdateTime,jdbcType=TIMESTAMP}, #{payPwdUpdateTime,jdbcType=TIMESTAMP}, 
+      #{inviteCode,jdbcType=VARCHAR}, #{versions,jdbcType=BIGINT}, #{del,jdbcType=CHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="me.mizhoux.model.UUser">
+    update u_user
+    set uuid = #{uuid,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      login_pwd = #{loginPwd,jdbcType=VARCHAR},
+      pay_pwd = #{payPwd,jdbcType=VARCHAR},
+      vip = #{vip,jdbcType=TINYINT},
+      phone = #{phone,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      platform = #{platform,jdbcType=VARCHAR},
+      op_channel_id = #{opChannelId,jdbcType=VARCHAR},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      login_pwd_update_time = #{loginPwdUpdateTime,jdbcType=TIMESTAMP},
+      pay_pwd_update_time = #{payPwdUpdateTime,jdbcType=TIMESTAMP},
+      invite_code = #{inviteCode,jdbcType=VARCHAR},
+      versions = #{versions,jdbcType=BIGINT},
+      del = #{del,jdbcType=CHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, uuid, username, login_pwd, pay_pwd, vip, phone, state, salt, platform, 
+    op_channel_id, insert_time, update_time, login_pwd_update_time, pay_pwd_update_time, 
+    invite_code, versions, del, remark
+    from u_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, uuid, username, login_pwd, pay_pwd, vip, phone, state, salt, platform, 
+    op_channel_id, insert_time, update_time, login_pwd_update_time, pay_pwd_update_time, 
+    invite_code, versions, del, remark
+    from u_user
+  </select>
+</mapper>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uustocks.mapper.UFavorStockMapper">
+  <resultMap id="BaseResultMap" type="com.uustocks.entity.UFavorStock">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="u_user_id" jdbcType="INTEGER" property="uUserId" />
+    <result column="stock_exchange" jdbcType="VARCHAR" property="stockExchange" />
+    <result column="stock_name" jdbcType="VARCHAR" property="stockName" />
+    <result column="stock_code" jdbcType="VARCHAR" property="stockCode" />
+    <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="versions" jdbcType="BIGINT" property="versions" />
+    <result column="del" jdbcType="CHAR" property="del" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, u_user_id, stock_exchange, stock_name, stock_code, insert_time, update_time, 
+    versions, del, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from u_favor_stock
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from u_favor_stock
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.uustocks.entity.UFavorStock">
+    insert into u_favor_stock (id, u_user_id, stock_exchange, 
+      stock_name, stock_code, insert_time, 
+      update_time, versions, del, 
+      remark)
+    values (#{id,jdbcType=INTEGER}, #{uUserId,jdbcType=INTEGER}, #{stockExchange,jdbcType=VARCHAR}, 
+      #{stockName,jdbcType=VARCHAR}, #{stockCode,jdbcType=VARCHAR}, #{insertTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{versions,jdbcType=BIGINT}, #{del,jdbcType=CHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.uustocks.entity.UFavorStock">
+    insert into u_favor_stock
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="uUserId != null">
+        u_user_id,
+      </if>
+      <if test="stockExchange != null">
+        stock_exchange,
+      </if>
+      <if test="stockName != null">
+        stock_name,
+      </if>
+      <if test="stockCode != null">
+        stock_code,
+      </if>
+      <if test="insertTime != null">
+        insert_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="versions != null">
+        versions,
+      </if>
+      <if test="del != null">
+        del,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uUserId != null">
+        #{uUserId,jdbcType=INTEGER},
+      </if>
+      <if test="stockExchange != null">
+        #{stockExchange,jdbcType=VARCHAR},
+      </if>
+      <if test="stockName != null">
+        #{stockName,jdbcType=VARCHAR},
+      </if>
+      <if test="stockCode != null">
+        #{stockCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null">
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="versions != null">
+        #{versions,jdbcType=BIGINT},
+      </if>
+      <if test="del != null">
+        #{del,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.uustocks.entity.UFavorStock">
+    update u_favor_stock
+    <set>
+      <if test="uUserId != null">
+        u_user_id = #{uUserId,jdbcType=INTEGER},
+      </if>
+      <if test="stockExchange != null">
+        stock_exchange = #{stockExchange,jdbcType=VARCHAR},
+      </if>
+      <if test="stockName != null">
+        stock_name = #{stockName,jdbcType=VARCHAR},
+      </if>
+      <if test="stockCode != null">
+        stock_code = #{stockCode,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null">
+        insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="versions != null">
+        versions = #{versions,jdbcType=BIGINT},
+      </if>
+      <if test="del != null">
+        del = #{del,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.uustocks.entity.UFavorStock">
+    update u_favor_stock
+    set u_user_id = #{uUserId,jdbcType=INTEGER},
+      stock_exchange = #{stockExchange,jdbcType=VARCHAR},
+      stock_name = #{stockName,jdbcType=VARCHAR},
+      stock_code = #{stockCode,jdbcType=VARCHAR},
+      insert_time = #{insertTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      versions = #{versions,jdbcType=BIGINT},
+      del = #{del,jdbcType=CHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
