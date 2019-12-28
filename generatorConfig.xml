@@ -20,111 +20,122 @@
 
         <!-- 自定义注释生成器 -->
         <commentGenerator type="me.mizhoux.mbgcomment.MySQLCommentGenerator">
-            <property name="author" value="西早哥哥"/>
+            <property name="author" value="monkey king"/>
             <property name="dateFormat" value="yyyy/MM/dd HH:mm:ss"/>
         </commentGenerator>
 
         <!-- 配置数据库连接 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/stock_doctor?characterEncoding=utf-8&amp;useSSL=false"
-                        userId="root" password="123456">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/luxury?characterEncoding=utf-8&amp;serverTimezone=Asia/Shanghai&amp;useSSL=false" userId="root" password="123456" >
             <!-- 设置 useInformationSchema 属性为 true -->
-            <property name="useInformationSchema" value="true"/>
+            <property name="useInformationSchema" value="true" />
         </jdbcConnection>
 
-        <!--===========================填写实体,mapper,xml的路径====================================-->
-
         <!-- 生成实体的位置 -->
-        <javaModelGenerator targetPackage="com.uustocks.entity" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.luxuryadmin.entity.sys" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaModelGenerator>
 
-        <!-- 生成 Mapper 接口的位置 -->
-        <sqlMapGenerator targetPackage="com.uustocks.dao" targetProject="src/main/java">
+        <!-- 生成 Mapper XML 的位置 -->
+        <sqlMapGenerator targetPackage="mapper.sys" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <!-- 生成 Mapper XML 的位置 -->
-        <javaClientGenerator targetPackage="com.uustocks.mapper" type="XMLMAPPER" targetProject="src/main/java">
+        <!-- 生成 Mapper 接口的位置 -->
+        <javaClientGenerator targetPackage="com.luxuryadmin.mapper.sys" type="XMLMAPPER" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <!--===========================填写实体,mapper,xml的路径======END==============================-->
-
         <!-- 设置数据库的表名和实体类名 -->
 
-        <!--用户模块（U）-->
-        <table tableName="u_account" domainObjectName="UAccount" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-        <table tableName="u_booking" domainObjectName="UBooking" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-        <table tableName="u_booking_record" domainObjectName="UBookingRecord" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-        <table tableName="u_extend_info" domainObjectName="UExtendInfo" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-        <table tableName="u_favor_stock" domainObjectName="UFavorStock" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-        <table tableName="u_fund_record" domainObjectName="UFundRecord" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-        <table tableName="u_inmail" domainObjectName="UInmail" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-        <table tableName="u_invite" domainObjectName="UInvite" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-        <table tableName="u_token" domainObjectName="UToken" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-        <table tableName="u_user" domainObjectName="UUser" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
+       <!-- <table  tableName="biz%" />
+        <table  tableName="fin%" />
 
-        <!--运营模块（OP）-->
-        <table tableName="op_app_active" domainObjectName="OpAppActive" enableCountByExample="false"
+        <table  tableName="ord%" />
+           <table  tableName="pro%" />
+        <table  tableName="shp%" />-->
+
+        <!--<table tableName="shp%"  enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-        <table tableName="op_channel" domainObjectName="OpChannel" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-        <table tableName="op_comment" domainObjectName="OpComment" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-        <table schema="OpSmsRecord" tableName="op_sms_record" enableCountByExample="false"
+               selectByExampleQueryId="false"/>-->
+
+       <!-- <table tableName="op%"  enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <columnOverride column="phone" javaType="java.lang.String" jdbcType="VARCHAR"/>
-            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR"/>
-        </table>
-        <table tableName="op_sms_tpl" domainObjectName="OpSmsTpl" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
+        <columnOverride column="fk_shp_shop_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+        </table>-->
 
-        <!--运营模块（PRO）-->
-        <table tableName="pro_product" domainObjectName="ProProduct" enableCountByExample="false"
+       <!-- <table tableName="op%"  enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
+               selectByExampleQueryId="false"/>-->
 
-        <table schema="ProProductDetails" tableName="pro_product_details" enableCountByExample="false"
+       <!-- <table tableName="op_notice" domainObjectName="OpNotice" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
+        </table>-->
+
+        <table tableName="sys%"  enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
         </table>
+        <!--商务模块(biz)-->
+        <!--<table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency_detail" domainObjectName="bizAgency" />
+        <table tableName="biz_agency_order" domainObjectName="bizAgency" />
+        <table tableName="biz_agency_share_product" domainObjectName="bizAgency" />
+        <table tableName="biz_leaguer" domainObjectName="bizAgency" />
+        <table tableName="biz_leaguer_add_friend" domainObjectName="bizAgency" />
+        <table tableName="biz_leaguer_order" domainObjectName="bizAgency" />
+        <table tableName="biz_leaguer_share_product" domainObjectName="bizAgency" />
+        &lt;!&ndash;财务模块(fiz)&ndash;&gt;
+        <table tableName="fin_classify" domainObjectName="bizAgency" />
+        <table tableName="fin_classify_tpl" domainObjectName="bizAgency" />
+        <table tableName="fin_fund_record" domainObjectName="bizAgency" />
+        &lt;!&ndash;运营模块(op)&ndash;&gt;
+        &lt;!&ndash;订单模块(ord)&ndash;&gt;
+        &lt;!&ndash;店铺模块(shp)&ndash;&gt;
+        &lt;!&ndash;商务模块(biz)&ndash;&gt;
+        &lt;!&ndash;系统模块(sys)&ndash;&gt;
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />
+        <table tableName="biz_agency" domainObjectName="bizAgency" />-->
 
 
-        <table tableName="sys_user" domainObjectName="SysUser" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
-
-        <!--支付模块（pay）-->
-        <table tableName="pay_recharge_record" domainObjectName="PayRechargeRecord" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"/>
     </context>
+
 
 </generatorConfiguration>
