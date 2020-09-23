@@ -10,7 +10,7 @@
     -->
     <!--targetRuntime="MyBatis3Simple" 只生成简单的增删改查-->
     <!--<context id="mysql" defaultModelType="hierarchical" targetRuntime="MyBatis3Simple" >-->
-    <context id="mysql" defaultModelType="flat" targetRuntime="MyBatis3">
+    <context id="mysql" defaultModelType="flat" targetRuntime="me.mizhoux.mbgcomment.MyRunTime" >
         <!-- 生成的 Java 文件的编码 -->
         <property name="javaFileEncoding" value="UTF-8"/>
         <!-- 格式化 Java 代码 -->
@@ -31,20 +31,25 @@
         </jdbcConnection>
 
         <!-- 生成实体的位置 -->
-        <javaModelGenerator targetPackage="com.luxuryadmin.entity.sys" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.luxuryadmin.entity.fin" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaModelGenerator>
 
         <!-- 生成 Mapper XML 的位置 -->
-        <sqlMapGenerator targetPackage="mapper.sys" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="mapper.fin" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- 生成 Mapper 接口的位置 -->
-        <javaClientGenerator targetPackage="com.luxuryadmin.mapper.sys" type="XMLMAPPER" targetProject="src/main/java">
+        <javaClientGenerator targetPackage="com.luxuryadmin.mapper.fin" type="XMLMAPPER" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
-
+<!--        <table tableName="shp_bind_count"  enableCountByExample="false"-->
+<!--               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+<!--               selectByExampleQueryId="false"/>-->
+        <table tableName="fin%"  enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
         <!-- 设置数据库的表名和实体类名 -->
 
        <!-- <table  tableName="biz%" />
@@ -74,11 +79,11 @@
             <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
         </table>-->
 
-        <table tableName="sys%"  enableCountByExample="false"
+       <!-- <table tableName="sys%"  enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
             <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
+        </table>-->
         <!--商务模块(biz)-->
         <!--<table tableName="biz_agency" domainObjectName="bizAgency" />
         <table tableName="biz_agency_detail" domainObjectName="bizAgency" />
